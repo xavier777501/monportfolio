@@ -1,0 +1,19 @@
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+.env
+.env.local
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# os
+.DS_Store
+Thumbs.db
+
+# source assets not meant for the built app
+assets-source
