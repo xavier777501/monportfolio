@@ -35,7 +35,7 @@ export default function Cursor() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-[100] h-8 w-8 rounded-full border border-fuchsia-300/70 mix-blend-difference"
+      className="pointer-events-none fixed left-0 top-0 z-[100] h-8 w-8 rounded-full border border-accent/70"
       style={{ x: ringX, y: ringY }}
       animate={{ scale: hovering ? 1.8 : 1, opacity: 1 }}
       transition={{ scale: { duration: 0.25 } }}

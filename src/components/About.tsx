@@ -24,16 +24,16 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="md:col-span-3"
           >
-            <p className="text-lg leading-relaxed text-slate-300">{profile.bio}</p>
-            <p className="mt-4 leading-relaxed text-slate-400">
+            <p className="text-lg leading-relaxed text-ink">{profile.bio}</p>
+            <p className="mt-4 leading-relaxed text-muted">
               Curieux et rigoureux, j'aime comprendre chaque brique d'un projet — de la modélisation des données à
               l'expérience utilisateur finale. J'accorde une attention particulière à la qualité du code, aux bonnes
               pratiques CI/CD et à la fiabilité des systèmes que je construis.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-2">
               {['Résolution de problèmes', 'Travail d’équipe', 'Apprentissage continu', 'Sens du détail'].map((t) => (
-                <span key={t} className="glass rounded-full px-4 py-2 text-sm text-slate-300">
+                <span key={t} className="font-display panel rounded px-3 py-1.5 text-xs text-muted">
                   {t}
                 </span>
               ))}
@@ -48,15 +48,15 @@ export default function About() {
             className="grid grid-cols-1 gap-4 md:col-span-2"
           >
             {stats.map(({ icon: Icon, value, suffix, label }) => (
-              <div key={label} className="glow-border glass flex items-center gap-4 rounded-2xl p-5">
-                <div className="rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 p-3 text-cyan-300">
+              <div key={label} className="panel panel-hover flex items-center gap-4 rounded-md p-5">
+                <div className="rounded bg-panel-2 p-3 text-accent">
                   <Icon size={22} />
                 </div>
                 <div>
-                  <p className="font-display text-2xl font-bold text-white">
+                  <p className="font-display text-2xl font-bold text-ink">
                     <Counter to={value} suffix={suffix} />
                   </p>
-                  <p className="text-sm text-slate-400">{label}</p>
+                  <p className="text-sm text-muted">{label}</p>
                 </div>
               </div>
             ))}

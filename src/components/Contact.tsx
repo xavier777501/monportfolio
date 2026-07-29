@@ -67,18 +67,18 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-2"
           >
-            <p className="text-slate-400">
+            <p className="text-muted">
               Une idée, un projet backend, une API à concevoir ? Écrivez-moi, je réponds rapidement.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-8 space-y-3">
               {contactLinks.map(({ icon: Icon, label, href }) => {
                 const content = (
-                  <div className="glass glow-border flex items-center gap-4 rounded-2xl p-4">
-                    <div className="rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 p-3 text-cyan-300">
-                      <Icon size={20} />
+                  <div className="panel panel-hover flex items-center gap-4 rounded-md p-4">
+                    <div className="rounded bg-panel-2 p-3 text-accent">
+                      <Icon size={18} />
                     </div>
-                    <span className="text-sm text-slate-200">{label}</span>
+                    <span className="text-sm text-ink">{label}</span>
                   </div>
                 )
                 return href ? (
@@ -100,7 +100,7 @@ export default function Contact() {
                   rel="noreferrer"
                   aria-label={label}
                   data-cursor-hover
-                  className="glass flex h-11 w-11 items-center justify-center rounded-full text-slate-300 transition-all hover:-translate-y-1 hover:text-white hover:shadow-lg hover:shadow-violet-900/30"
+                  className="panel panel-hover flex h-11 w-11 items-center justify-center rounded text-muted transition-transform hover:-translate-y-1 hover:text-accent"
                 >
                   <Icon size={18} />
                 </a>
@@ -114,24 +114,24 @@ export default function Contact() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             onSubmit={handleSubmit}
-            className="glass glow-border space-y-5 rounded-3xl p-6 lg:col-span-3 sm:p-8"
+            className="panel space-y-5 rounded-md p-6 lg:col-span-3 sm:p-8"
           >
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="mb-1.5 block text-sm text-slate-300">
-                  Nom
+                <label htmlFor="name" className="font-display mb-1.5 block text-xs text-muted">
+                  nom
                 </label>
                 <input
                   id="name"
                   name="name"
                   required
                   placeholder="Votre nom"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition-colors placeholder:text-slate-500 focus:border-cyan-400/60"
+                  className="w-full rounded border border-line bg-panel-2 px-4 py-3 text-ink outline-none transition-colors placeholder:text-faint focus:border-accent"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="mb-1.5 block text-sm text-slate-300">
-                  Email
+                <label htmlFor="email" className="font-display mb-1.5 block text-xs text-muted">
+                  email
                 </label>
                 <input
                   id="email"
@@ -139,14 +139,14 @@ export default function Contact() {
                   type="email"
                   required
                   placeholder="vous@exemple.com"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition-colors placeholder:text-slate-500 focus:border-cyan-400/60"
+                  className="w-full rounded border border-line bg-panel-2 px-4 py-3 text-ink outline-none transition-colors placeholder:text-faint focus:border-accent"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="message" className="mb-1.5 block text-sm text-slate-300">
-                Message
+              <label htmlFor="message" className="font-display mb-1.5 block text-xs text-muted">
+                message
               </label>
               <textarea
                 id="message"
@@ -154,7 +154,7 @@ export default function Contact() {
                 required
                 rows={5}
                 placeholder="Parlez-moi de votre projet..."
-                className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition-colors placeholder:text-slate-500 focus:border-cyan-400/60"
+                className="w-full resize-none rounded border border-line bg-panel-2 px-4 py-3 text-ink outline-none transition-colors placeholder:text-faint focus:border-accent"
               />
             </div>
 
@@ -162,20 +162,20 @@ export default function Contact() {
               type="submit"
               disabled={status === 'sending'}
               data-cursor-hover
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-cyan-500 px-6 py-3.5 font-semibold text-white shadow-lg shadow-violet-900/30 transition-transform hover:scale-[1.02] disabled:opacity-60 sm:w-auto"
+              className="font-display inline-flex w-full items-center justify-center gap-2 rounded bg-accent px-6 py-3.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-[#ffb15e] disabled:opacity-60 sm:w-auto"
             >
-              <Send size={18} />
-              {status === 'sending' ? 'Envoi en cours...' : 'Envoyer le message'}
+              <Send size={16} />
+              {status === 'sending' ? 'envoi en cours...' : 'envoyer le message'}
             </button>
 
-            {status === 'success' && (
-              <p className="text-sm text-emerald-400">Message envoyé avec succès, merci !</p>
-            )}
+            {status === 'success' && <p className="text-sm text-[#8fbf6b]">Message envoyé avec succès, merci !</p>}
             {status === 'error' && (
-              <p className="text-sm text-red-400">Une erreur est survenue, réessayez ou écrivez directement à {profile.email}.</p>
+              <p className="text-sm text-[#e2685a]">
+                Une erreur est survenue, réessayez ou écrivez directement à {profile.email}.
+              </p>
             )}
             {status === 'fallback' && (
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-muted">
                 Votre client email s'est ouvert avec le message pré-rempli — il ne reste qu'à l'envoyer.
               </p>
             )}

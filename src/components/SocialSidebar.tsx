@@ -27,14 +27,14 @@ export default function SocialSidebar() {
                 rel="noreferrer"
                 aria-label={label}
                 data-cursor-hover
-                className="block text-slate-400 transition-all hover:-translate-y-1 hover:text-cyan-300"
+                className="block text-faint transition-all hover:-translate-y-1 hover:text-accent"
               >
                 <Icon size={19} />
               </a>
             </li>
           ))}
         </ul>
-        <div className="h-24 w-px bg-gradient-to-b from-slate-500 to-transparent" />
+        <div className="h-24 w-px bg-gradient-to-b from-line to-transparent" />
       </motion.div>
 
       <motion.div
@@ -46,11 +46,11 @@ export default function SocialSidebar() {
         <a
           href={socials.email}
           data-cursor-hover
-          className="tracking-[0.2em] text-xs font-medium text-slate-400 [writing-mode:vertical-rl] hover:text-cyan-300"
+          className="font-display tracking-[0.2em] text-xs text-faint [writing-mode:vertical-rl] hover:text-accent"
         >
           {profile.email}
         </a>
-        <div className="h-24 w-px bg-gradient-to-b from-slate-500 to-transparent" />
+        <div className="h-24 w-px bg-gradient-to-b from-line to-transparent" />
       </motion.div>
     </>
   )

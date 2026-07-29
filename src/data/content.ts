@@ -38,7 +38,6 @@ export type Project = {
   tags: string[]
   code: string
   live: string
-  accent: string
 }
 
 export const projects: Project[] = [
@@ -50,7 +49,6 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Marketplace', 'Géolocalisation'],
     code: 'https://github.com/xavier777501/voizin',
     live: 'https://voizin-rho.vercel.app',
-    accent: 'from-emerald-500 to-teal-400',
   },
   {
     title: 'Edolelo',
@@ -60,7 +58,6 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'API REST', 'Marketplace'],
     code: 'https://github.com/xavier777501/marketplace-client-travailleurs',
     live: 'https://edolelo.vercel.app/',
-    accent: 'from-violet-500 to-fuchsia-500',
   },
   {
     title: 'ImmoPub',
@@ -70,6 +67,5 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Immobilier'],
     code: 'https://github.com/xavier777501/immopub',
     live: 'https://immopub.vercel.app/',
-    accent: 'from-cyan-500 to-blue-500',
   },
 ]

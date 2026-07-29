@@ -30,13 +30,31 @@ const extras = [SiTailwindcss, SiCss]
 
 const categories = Array.from(new Set(skills.map((s) => s.category)))
 
+function Meter({ level, delay }: { level: number; delay: number }) {
+  const filled = Math.round(level / 20)
+  return (
+    <div className="flex gap-1">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.3, delay: delay + i * 0.05 }}
+          className={`h-2.5 w-4 rounded-sm ${i < filled ? 'bg-accent' : 'bg-panel-2 border border-line'}`}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function Skills() {
   return (
     <section id="competences" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading kicker="Compétences" title="Ma boîte à outils" />
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
           {categories.map((category, catIndex) => (
             <motion.div
               key={category}
@@ -44,32 +62,21 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: catIndex * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="glass glow-border rounded-2xl p-6"
+              className="panel panel-hover rounded-md p-6"
             >
-              <h3 className="font-display mb-5 text-lg font-semibold text-white">{category}</h3>
-              <div className="space-y-5">
+              <h3 className="font-display mb-5 text-sm text-ink">{category}</h3>
+              <div className="space-y-4">
                 {skills
                   .filter((s) => s.category === category)
                   .map((skill, i) => {
                     const Icon = icons[skill.name]
                     return (
-                      <div key={skill.name}>
-                        <div className="mb-2 flex items-center justify-between">
-                          <span className="flex items-center gap-2 text-sm font-medium text-slate-200">
-                            {Icon && <Icon size={16} className="text-cyan-300" />}
-                            {skill.name}
-                          </span>
-                          <span className="text-xs text-slate-500">{skill.level}%</span>
-                        </div>
-                        <div className="h-2 w-full overflow-hidden rounded-full bg-white/5">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true, amount: 0.8 }}
-                            transition={{ duration: 1, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                            className="h-full rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-400 to-cyan-400"
-                          />
-                        </div>
+                      <div key={skill.name} className="flex items-center justify-between gap-4">
+                        <span className="flex items-center gap-2 text-sm text-muted">
+                          {Icon && <Icon size={15} className="text-faint" />}
+                          {skill.name}
+                        </span>
+                        <Meter level={skill.level} delay={i * 0.08} />
                       </div>
                     )
                   })}
@@ -83,10 +90,10 @@ export default function Skills() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-6 opacity-60"
+          className="mt-10 flex flex-wrap items-center justify-center gap-6"
         >
           {extras.map((Icon, i) => (
-            <Icon key={i} size={28} className="text-slate-400 transition-colors hover:text-cyan-300" />
+            <Icon key={i} size={24} className="text-faint transition-colors hover:text-accent" />
           ))}
         </motion.div>
       </div>
