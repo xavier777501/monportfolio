@@ -43,6 +43,16 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: 'Voizin',
+    subtitle: 'Marketplace de proximité entre voisins',
+    description:
+      "Application qui connecte acheteurs et vendeurs à proximité, sous le slogan « Ton voisin a ce que tu cherches ». Les acheteurs trouvent rapidement le meilleur vendeur près de chez eux, et les vendeurs sont découverts par des clients locaux et reçoivent des alertes automatiques dès qu'un produit qu'ils proposent est recherché.",
+    tags: ['React', 'TypeScript', 'Marketplace', 'Géolocalisation'],
+    code: 'https://github.com/xavier777501/voizin',
+    live: 'https://voizin-rho.vercel.app',
+    accent: 'from-emerald-500 to-teal-400',
+  },
+  {
     title: 'Edolelo',
     subtitle: 'Marketplace clients ↔ travailleurs',
     description:

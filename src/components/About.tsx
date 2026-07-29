@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { Code2, Rocket, Server } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Counter from './Counter'
-import { profile } from '../data/content'
+import { profile, projects, skills } from '../data/content'
 
 const stats = [
-  { icon: Server, value: 2, suffix: '+', label: "Projets déployés en production" },
-  { icon: Code2, value: 8, suffix: '+', label: 'Technologies maîtrisées' },
+  { icon: Server, value: projects.length, suffix: '+', label: "Projets déployés en production" },
+  { icon: Code2, value: skills.length, suffix: '+', label: 'Technologies maîtrisées' },
   { icon: Rocket, value: profile.yearsExperience, suffix: '+', label: "Années de pratique" },
 ]
 
