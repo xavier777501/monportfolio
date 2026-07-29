@@ -17,19 +17,8 @@ export default function Hero() {
     <section id="accueil" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-16">
       <div className="mx-auto grid max-w-6xl w-full grid-cols-1 items-center gap-16 md:grid-cols-2">
         <div>
-          <motion.p
-            custom={0}
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            className="font-display mb-5 text-xs text-muted"
-          >
-            <span className="text-accent">~/xavier-tchalla</span> $ whoami
-            <span className="animate-blink text-accent">_</span>
-          </motion.p>
-
           <motion.h1
-            custom={1}
+            custom={0}
             initial="hidden"
             animate="show"
             variants={fadeUp}
@@ -38,13 +27,13 @@ export default function Hero() {
             Xavier <span className="text-accent">Tchalla</span>
           </motion.h1>
 
-          <motion.p custom={2} initial="hidden" animate="show" variants={fadeUp} className="mt-5 max-w-xl text-lg text-muted">
+          <motion.p custom={1} initial="hidden" animate="show" variants={fadeUp} className="mt-5 max-w-xl text-lg text-muted">
             {profile.role} — je conçois des <span className="text-ink">API</span> et des{' '}
             <span className="text-ink">backends</span> robustes, et je les habille d'interfaces{' '}
             <span className="text-ink">React</span> modernes.
           </motion.p>
 
-          <motion.div custom={3} initial="hidden" animate="show" variants={fadeUp} className="mt-6 flex flex-wrap gap-2">
+          <motion.div custom={2} initial="hidden" animate="show" variants={fadeUp} className="mt-6 flex flex-wrap gap-2">
             {profile.roleTags.map((tag) => (
               <span key={tag} className="font-display panel rounded px-3 py-1 text-[11px] text-muted">
                 {tag}
@@ -52,7 +41,7 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          <motion.div custom={4} initial="hidden" animate="show" variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-4">
+          <motion.div custom={3} initial="hidden" animate="show" variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#projets"
               data-cursor-hover
@@ -70,7 +59,7 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <motion.p custom={5} initial="hidden" animate="show" variants={fadeUp} className="font-display mt-8 text-[11px] text-faint">
+          <motion.p custom={4} initial="hidden" animate="show" variants={fadeUp} className="font-display mt-8 text-[11px] text-faint">
             <span className="text-accent">■</span> disponible pour un stage &amp; les hackathons
           </motion.p>
         </div>
