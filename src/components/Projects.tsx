@@ -2,6 +2,15 @@ import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import { projects } from '../data/content'
+import voizinShot from '../assets/projects/voizin.jpg'
+import edoleloShot from '../assets/projects/edolelo.jpg'
+import immopubShot from '../assets/projects/immopub.jpg'
+
+const screenshots: Record<string, string> = {
+  Voizin: voizinShot,
+  Edolelo: edoleloShot,
+  ImmoPub: immopubShot,
+}
 
 function slug(title: string) {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
@@ -29,6 +38,21 @@ export default function Projects() {
                 <span className="h-2.5 w-2.5 rounded-sm bg-accent" />
                 <span className="font-display ml-2 text-[11px] text-faint">~/projets/{slug(project.title)}</span>
               </div>
+
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor-hover
+                className="block overflow-hidden border-b border-line bg-panel-2"
+              >
+                <img
+                  src={screenshots[project.title]}
+                  alt={`Aperçu du site ${project.title}`}
+                  className="aspect-[16/10] w-full object-cover object-center transition-transform duration-500 hover:scale-[1.04]"
+                  loading="lazy"
+                />
+              </a>
 
               <div className="p-6">
                 <p className="font-display text-[11px] text-accent">{project.subtitle}</p>
