@@ -50,7 +50,7 @@ function Meter({ level, delay }: { level: number; delay: number }) {
 
 export default function Skills() {
   return (
-    <section id="competences" className="relative px-6 py-28">
+    <section id="competences" className="relative scroll-mt-24 px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading kicker="Compétences" title="Ma boîte à outils" />
 

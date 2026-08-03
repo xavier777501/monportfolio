@@ -9,7 +9,7 @@ export const profile = {
   location: 'Bénin',
   email: 'xaviertchalla@gmail.com',
   bio: "Développeur passionné, spécialisé dans la conception d'API robustes et de backends performants avec Python et FastAPI. Je construis aussi des interfaces modernes et réactives avec React.js. Basé au Bénin, j'aime transformer des idées en produits complets, du serveur jusqu'à l'interface finale.",
-  yearsExperience: 2,
+  yearsExperience: 3,
 }
 
 export const socials = {

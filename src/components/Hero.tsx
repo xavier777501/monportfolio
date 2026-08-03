@@ -14,7 +14,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section id="accueil" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-16">
+    <section id="accueil" className="relative flex min-h-screen scroll-mt-24 items-center overflow-hidden px-6 pt-28 pb-16">
       <div className="mx-auto grid max-w-6xl w-full grid-cols-1 items-center gap-16 md:grid-cols-2">
         <div>
           <motion.h1
@@ -58,10 +58,6 @@ export default function Hero() {
               me contacter
             </a>
           </motion.div>
-
-          <motion.p custom={4} initial="hidden" animate="show" variants={fadeUp} className="font-display mt-8 text-[11px] text-faint">
-            <span className="text-accent">■</span> disponible pour un stage &amp; les hackathons
-          </motion.p>
         </div>
 
         <motion.div

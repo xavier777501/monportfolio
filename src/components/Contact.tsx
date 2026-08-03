@@ -55,7 +55,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative px-6 py-28">
+    <section id="contact" className="relative scroll-mt-24 px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading kicker="Contact" title="Discutons de votre projet" />
 

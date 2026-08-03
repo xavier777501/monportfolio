@@ -9,7 +9,7 @@ function slug(title: string) {
 
 export default function Projects() {
   return (
-    <section id="projets" className="relative px-6 py-28">
+    <section id="projets" className="relative scroll-mt-24 px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading kicker="Projets" title="Ce que j'ai construit" />
 
