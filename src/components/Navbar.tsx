@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import type { MouseEvent } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
@@ -35,14 +36,36 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
+  const goTo = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    setOpen(false)
+    const target = document.querySelector(href)
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      history.pushState(null, '', href)
+    }
+  }
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled ? 'panel border-x-0 border-t-0 py-3' : 'border-b border-transparent py-5'
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <a href="#accueil" data-cursor-hover className="font-display text-lg font-semibold tracking-tight text-ink">
+        <a
+          href="#accueil"
+          onClick={(e) => goTo(e, '#accueil')}
+          data-cursor-hover
+          className="font-display text-lg font-semibold tracking-tight text-ink"
+        >
           xavier<span className="text-accent">.</span>tchalla
         </a>
 
@@ -51,6 +74,7 @@ export default function Navbar() {
             <li key={link.href} className="relative">
               <a
                 href={link.href}
+                onClick={(e) => goTo(e, link.href)}
                 data-cursor-hover
                 className={`font-display text-xs tracking-wide transition-colors ${
                   active === link.href ? 'text-ink' : 'text-muted hover:text-ink'
@@ -67,6 +91,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
+          onClick={(e) => goTo(e, '#contact')}
           data-cursor-hover
           className="hidden rounded bg-accent px-5 py-2 font-display text-xs font-semibold text-accent-ink transition-colors hover:bg-[#ffb15e] md:inline-block"
         >
@@ -75,8 +100,8 @@ export default function Navbar() {
 
         <button
           data-cursor-hover
-          aria-label="Ouvrir le menu"
-          className="text-ink md:hidden"
+          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+          className="relative z-50 text-ink md:hidden"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -86,22 +111,28 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="panel mt-3 overflow-hidden border-x-0 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="bg-bg fixed inset-0 z-40 md:hidden"
           >
-            <ul className="flex flex-col gap-1 px-6 py-4">
-              {links.map((link) => (
-                <li key={link.href}>
+            <ul className="flex h-full flex-col items-center justify-center gap-8">
+              {links.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 + i * 0.05, duration: 0.3 }}
+                >
                   <a
                     href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="font-display block rounded px-3 py-3 text-sm text-muted transition-colors hover:bg-panel-2 hover:text-ink"
+                    onClick={(e) => goTo(e, link.href)}
+                    className="font-display block px-6 py-2 text-2xl text-muted transition-colors hover:text-accent"
                   >
                     {link.label}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
